@@ -1,0 +1,25 @@
+{
+  "name": "repeat-promise-until-resolved",
+  "version": "1.0.3",
+  "description": "",
+  "main": "index.js",
+  "homepage": "https://github.com/ibrod83/repeat-promise-until-resolved",
+  "bugs": {
+    "url": "https://github.com/ibrod83/repeat-promise-until-resolved/issues"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ibrod83",
+  "license": "ISC",
+  "keywords": [
+    "promise",
+    "javascript",
+    "async",
+    "repeat",
+    "nodejs"    
+  ],
+  "dependencies": {}
+}
+
+
