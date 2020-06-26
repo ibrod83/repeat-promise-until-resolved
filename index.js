@@ -10,7 +10,16 @@
 })(this,repeatPromiseUntilResolved )
 
 
-async function repeatPromiseUntilResolved(promiseFactory, config = {}, attempts = 0) {//Repeats a given failed promise few times(not to be confused with "repeatErrors()").
+/**
+ * 
+ * @param {Function} promiseFactory 
+ * @param {Object} config 
+ * @param {Function} [config.onError] 
+ * @param {Function}  [config.onAttempt]  
+ * @param {number}  [config.delay]  
+ * @param {number}  [config.maxAttempts]   
+ */
+async function repeatPromiseUntilResolved(promiseFactory, config={}, attempts = 0) {//Repeats a given failed promise few times(not to be confused with "repeatErrors()").
 
     // const {maxRetries} = config  
     // debugger;
