@@ -10,7 +10,7 @@ $ npm install repeat-promise-until-resolved
   * [Usage](#usage)       
   * [Basic example](#basic-example)  
   * [Additional configuration](#additional-configuration)  
-  * [API](#api)  
+- [API](#api)  
 
 ## Examples
 #### Usage
