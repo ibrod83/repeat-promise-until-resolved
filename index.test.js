@@ -10,7 +10,7 @@ const repeatPromiseUntilResolved = require('./index');
 
 
 
-describe('Downloader tests', () => {
+describe('General tests', () => {
 
     // before((done) => {
     //     rimraf.sync("./downloads");
@@ -140,7 +140,7 @@ describe('Downloader tests', () => {
         } catch (error) {
 
 
-           
+
         }
 
         const end = Date.now();
@@ -154,9 +154,54 @@ describe('Downloader tests', () => {
         // expect(attemptCount).toBe(1);
     })
 
+    it('Should timeout and finally fail', async function () {
+        let errorCount = 0;
+
+        let finallyFailed = false;
+
+        this.timeout(0)
+        
+        mock.onGet("/200").reply(200)
+
+        async function promiseFactory() {
+            await createDelay(1001);
+            await axios('/200');
+
+        }
+
+        const onError = (e) => {
+            // console.log(e)
+            errorCount++
+        }
+
+        try {
+            await repeatPromiseUntilResolved(promiseFactory, {delay:1050, onError, maxAttempts: 3, timeout: 1000 });
+        } catch (error) {
+
+
+            finallyFailed = true;
+        }
+
+      
+
+
+        expect(errorCount).toBe(3);
+        expect(finallyFailed).toBe(true);
+    })
+
 
 
 
 
 })
+
+
+function createDelay(time = 0) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve();
+        }, time)
+    })
+}
+
 

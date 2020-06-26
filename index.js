@@ -7,7 +7,7 @@
         global['repeatPromiseUntilResolved'] = repeatPromiseUntilResolved;
     }
 
-})(this,repeatPromiseUntilResolved )
+})(this, repeatPromiseUntilResolved)
 
 
 /**
@@ -18,20 +18,25 @@
  * @param {Function}  [config.onAttempt]  
  * @param {number}  [config.delay]  
  * @param {number}  [config.maxAttempts]   
+ * @param {number}  [config.timeout]   
  */
-async function repeatPromiseUntilResolved(promiseFactory, config={}, attempts = 0) {//Repeats a given failed promise few times(not to be confused with "repeatErrors()").
+async function repeatPromiseUntilResolved(promiseFactory, config = {}, attempts = 0) {//Repeats a given failed promise few times(not to be confused with "repeatErrors()").
 
     // const {maxRetries} = config  
     // debugger;
     const delay = config.delay || null;
-    var maxAttempts = config.maxAttempts || 3;
+    const maxAttempts = config.maxAttempts || 3;
+    const timeout = config.timeout || 80000
     try {
         // console.log('Attempt number: ',attempts+1)
         if (config.onAttempt) {
             await config.onAttempt(attempts + 1)
         }
         // debugger;
-        return await promiseFactory();
+        const promise = promiseFactory();
+        const result = await promiseWithTimeout(promise,timeout);
+        // const result = await promiseFactory();
+        return result;
     } catch (error) {
 
         // debugger;
@@ -62,5 +67,28 @@ function createDelay(time = 0) {
         }, time)
     })
 }
+
+function promiseWithTimeout(promise, time) {
+    // debugger;
+    return new Promise(async (resolve, reject) => {
+        if (time) {
+            var timeout = setTimeout(() => {
+                // console.log('timed out!')
+                reject(new Error('Promise timed out as defined in the config'))
+            }, time)
+        }
+        try {
+            const result = await promise;           
+            resolve(result);
+        } catch (error) {
+            reject(error);
+        }finally{
+            clearTimeout(timeout);
+        }
+
+    })
+}
+
+
 
 

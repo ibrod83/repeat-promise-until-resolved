@@ -10,6 +10,7 @@ $ npm install repeat-promise-until-resolved
   * [Usage](#usage)       
   * [Basic example](#basic-example)  
   * [Additional configuration](#additional-configuration)  
+  * [API](#api)  
 
 ## Examples
 #### Usage
@@ -78,8 +79,9 @@ const axios = require('axios');
     }
 
     try {
-        //Limit to 5 attempts, and create a delay of 2 seconds between each attempt. Also pass functions to the hooks.
-        await repeatPromiseUntilResolved(promiseFactory, { maxAttempts: 5, delay: 2000, onAttempt, onError });
+        //Limit to 5 attempts, and create a delay of 2 seconds between each attempt. timeout: Wait up to 5 seconds for each promise to resolve, until it's manually rejected(and retried)
+        //Also pass functions to the hooks.
+        await repeatPromiseUntilResolved(promiseFactory, { maxAttempts: 5, delay: 2000, timeout:5000, onAttempt, onError });
     } catch (error) {        
         console.log('final fail',error)
     } 
@@ -87,5 +89,20 @@ const axios = require('axios');
 
 
 ```
+
+
+#### API
+
+### function repeatPromiseUntilResolved(promiseFactory,config):Promise
+
+| Parameter      | type  | Description                                                  |
+| ----------- |---- | ------------------------------------------------------------ |
+| promiseFactory | function | A function that returns the promise you want to "repeat" |
+| config   | object| A configuration and hook object. Not required|
+| config.maxAttempts | number| Number of maximum attempts(including the first one)               |
+| config.delay | number| Number of milliseconds to wait between each retry. Useful in network requests               |
+| config.timeout | number| Number of milliseconds to wait, until the promise is manually rejected. Default is 8000              |
+| config.onAttempt | function| Hook into each attempt. Receives the number of the current attempt as an argument                |
+| config.onError | function| Hook into each failed attempt. Receives the Error object as an argument                |
 
 
