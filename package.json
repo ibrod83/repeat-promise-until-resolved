@@ -1,6 +1,6 @@
 {
   "name": "repeat-promise-until-resolved",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "",
   "main": "index.js",
   "homepage": "https://ibrod83.github.io/repeat-promise-until-resolved",
@@ -22,9 +22,9 @@
   "dependencies": {},
   "devDependencies": {
     "axios": "^0.19.2",
-    "axios-mock-adapter": "^1.18.1",
-    "expect": "^26.1.0",
-    "mocha": "^8.0.1",
+    "axios-mock-adapter": "^1.18.2",
+    "expect": "^26.4.0",
+    "mocha": "^8.1.1",
     "rimraf": "^3.0.2"
   }
 }

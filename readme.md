@@ -104,5 +104,6 @@ const axios = require('axios');
 | config.timeout | number| Number of milliseconds to wait, until the promise is manually rejected. Default is 8000              |
 | config.onAttempt | function| Hook into each attempt. Receives the number of the current attempt as an argument                |
 | config.onError | function| Hook into each failed attempt. Receives the Error object as an argument                |
+| config.shouldStop | function| Hook into each failed attempt. Receives the Error object as an argument. Return true, if you want the repetition to stop                |
 
 

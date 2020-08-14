@@ -175,7 +175,7 @@ describe('General tests', () => {
         }
 
         try {
-            await repeatPromiseUntilResolved(promiseFactory, {delay:1050, onError, maxAttempts: 3, timeout: 1000 });
+            await repeatPromiseUntilResolved(promiseFactory, {onError, maxAttempts: 3, timeout: 1000 });
         } catch (error) {
 
 
