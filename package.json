@@ -1,6 +1,6 @@
 {
   "name": "repeat-promise-until-resolved",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "",
   "main": "index.js",
   "homepage": "https://ibrod83.github.io/repeat-promise-until-resolved",

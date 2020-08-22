@@ -35,7 +35,7 @@ async function repeatPromiseUntilResolved(promiseFactory,config={}) {
     const shouldStop = config.shouldStop || dummy;
     const delay = config.delay || null;
     const maxAttempts = config.maxAttempts || 3;
-    const timeout = config.timeout || 80000
+    const timeout = config.timeout || 0
     try {
         // console.log('Attempt number: ',attempts+1)
         if (config.onAttempt) {
