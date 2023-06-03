@@ -1,7 +1,8 @@
 {
   "name": "repeat-promise-until-resolved",
-  "version": "1.0.11",
+  "version": "1.1.0",
   "description": "",
+  "types": "index.d.ts",
   "main": "index.js",
   "homepage": "https://github.com/ibrod83/repeat-promise-until-resolved",
   "bugs": {
@@ -19,12 +20,11 @@
     "repeat",
     "nodejs"
   ],
-  "dependencies": {},
   "devDependencies": {
     "axios": "^0.21.4",
-    "axios-mock-adapter": "^1.18.2",
-    "expect": "^26.4.0",
-    "mocha": "^8.1.1",
-    "rimraf": "^3.0.2"
+    "axios-mock-adapter": "^1.21.4",
+    "expect": "^29.5.0",
+    "mocha": "^10.2.0",
+    "rimraf": "^5.0.1"
   }
 }
