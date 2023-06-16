@@ -12,37 +12,6 @@ const repeatPromiseUntilResolved = require('./index');
 
 describe('General tests', () => {
 
-    // before((done) => {
-    //     rimraf.sync("./downloads");
-    //     // console.log('done')
-    //     // deleteFolderRecursive('./downloads')
-    //     done();
-    // })
-
-
-    // /**
-    //  * 
-    //  * @param {string} path 
-    //  * @param {number} [size] 
-    //  */
-    // function verifyFile(path, size) {
-    //     return new Promise((resolve, reject) => {
-    //         fs.readFile(path, (err, data) => {
-    //             // console.log('err', err)
-    //             if (err)
-    //                 return reject(err)
-
-    //             if (!size || data.length == size) {
-    //                 resolve()
-    //             } else {
-    //                 reject(err)
-    //             }
-
-    //         });
-
-    //     })
-
-    // }
 
 
 
